@@ -23,7 +23,7 @@ Vendor:       SUSE Support
 License:      GPL-2.0
 Autoreqprov:  on
 Version:      1.2
-Release:      1
+Release:      1_140115.PTF.1
 Source:       %{name}-%{version}.tar.gz
 BuildRoot:    %{_tmppath}/%{name}-%{version}
 Buildarch:    noarch
@@ -59,6 +59,9 @@ install -m %{mode} patterns/%{category}/* $RPM_BUILD_ROOT/%{patdir}/%{category}
 rm -rf $RPM_BUILD_ROOT
 
 %changelog
+* Wed Jan 15 2014 jrecord@suse.com
+- added edir-7014412.py
+
 * Wed Dec 20 2013 jrecord@suse.com
 - separated as individual RPM package
 
