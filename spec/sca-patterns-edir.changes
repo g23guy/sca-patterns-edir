@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Sat Feb  8 22:17:35 UTC 2014 - jrecord@suse.com
+
+- Packaged COPYING.GPLv2
+
+-------------------------------------------------------------------
 Thu Jan 16 09:04:01 MST 2014 jrecord@suse.com
 
 - relocated files according to FHS
