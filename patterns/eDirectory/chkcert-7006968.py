@@ -119,11 +119,11 @@ checkeDirCerts(CERTS)
 if( CERTS[EXP_TOTAL] > 0 ):
 	if( CERTS[EXP_EXPIRED] > 0 ):
 		if ( CERTS[EXP_THIRTY] > 0 ):
-			Core.updateStatus(Core.CRIT, "Total: " + str(CERTS[EXP_TOTAL]) + ", Expired: " + str(CERTS[EXP_EXPIRED_STR]) + ", Expire in 30 Days: " + str(CERTS[EXP_THIRTY_STR]))
+			Core.updateStatus(Core.CRIT, "Total: " + str(CERTS[EXP_TOTAL]) + ", Expired: " + str(CERTS[EXP_EXPIRED]) + ' -- ' + str(CERTS[EXP_EXPIRED_STR]) + ", Expire in 30 Days: " + str(CERTS[EXP_THIRTY]) + ' -- ' + str(CERTS[EXP_THIRTY_STR]))
 		else:
-			Core.updateStatus(Core.CRIT, "Total: " + str(CERTS[EXP_TOTAL]) + ", Expired: " + str(CERTS[EXP_EXPIRED_STR]) + ", Expire in 30 Days: " + str(CERTS[EXP_THIRTY]))
+			Core.updateStatus(Core.CRIT, "Total: " + str(CERTS[EXP_TOTAL]) + ", Expired: " + str(CERTS[EXP_EXPIRED]) + ' -- ' + str(CERTS[EXP_EXPIRED_STR]) + ", Expire in 30 Days: " + str(CERTS[EXP_THIRTY]))
 	elif( CERTS[EXP_THIRTY] > 0 ):
-		Core.updateStatus(Core.WARN, "Total: " + str(CERTS[EXP_TOTAL]) + ", Expired: " + str(CERTS[EXP_EXPIRED]) + ", Expire in 30 Days: " + str(CERTS[EXP_THIRTY_STR]))
+		Core.updateStatus(Core.WARN, "Total: " + str(CERTS[EXP_TOTAL]) + ", Expired: " + str(CERTS[EXP_EXPIRED]) + ", Expire in 30 Days: " + str(CERTS[EXP_THIRTY]) + ' -- ' + str(CERTS[EXP_THIRTY_STR]))
 	else:
 		Core.updateStatus(Core.IGNORE, "All certificates expire in more than thirty days")
 else:
