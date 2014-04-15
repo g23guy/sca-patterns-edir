@@ -2,7 +2,7 @@
 
 # Title:       eDirectory Certificate Check
 # Description: Checks for expired certificates
-# Modified:    2014 Apr 07
+# Modified:    2014 Apr 15
 #
 ##############################################################################
 # Copyright (C) 2014 SUSE LLC
@@ -72,12 +72,23 @@ def checkeDirCerts(CERTS):
 				if content[line].startswith("nDSPKINotAfter"):
 					CERTS[EXP_TOTAL] += 1
 					EXPIRES = content[line].split()[1]
+#					print "EXPIRES = " + str(EXPIRES)
 					EX_YEAR = int(EXPIRES[0:4])
+#					print "EX_YEAR = " + str(EX_YEAR)
 					EX_MONTH = int(EXPIRES[4:6])
+#					print "EX_MONTH = " + str(EX_MONTH)
 					EX_DAY = int(EXPIRES[6:8])
+#					print "EX_DAY = " + str(EX_DAY)
 					EX_HOUR = int(EXPIRES[8:10])
+#					print "EX_HOUR = " + str(EX_HOUR)
 					EX_MIN = int(EXPIRES[10:12])
-					EX_SEC = int(EXPIRES[12:])
+#					print "EX_MIN = " + str(EX_MIN)
+					# confirm the date/time includes seconds
+					if( len(EXPIRES) > 12 ):
+						EX_SEC = int(EXPIRES[12:])
+					else:
+						EX_SEC = 0
+#					print "EX_SEC = " + str(EX_SEC)
 					THEN = datetime.datetime(EX_YEAR, EX_MONTH, EX_DAY, EX_HOUR, EX_MIN, EX_SEC)
 #					print ("Expires: '%s'" % THEN)
 					DELTA = THEN - NOW

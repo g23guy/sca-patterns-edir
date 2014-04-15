@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Tue Apr 15 15:52:43 UTC 2014 - jrecord@suse.com
+
+- Fixed chkcert-7006968.py when seconds are not given
+
+-------------------------------------------------------------------
 Tue Apr  8 01:55:36 UTC 2014 - jrecord@suse.com
 
 - Replaced certcheck-00001.pl with chkcert-7006968.py
