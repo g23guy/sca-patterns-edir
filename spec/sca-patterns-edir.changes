@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Wed Apr 16 16:05:24 UTC 2014 - jrecord@suse.com
+
+- Changed to lower case directory for consistency
+
+-------------------------------------------------------------------
 Tue Apr 15 15:52:43 UTC 2014 - jrecord@suse.com
 
 - Fixed chkcert-7006968.py when seconds are not given

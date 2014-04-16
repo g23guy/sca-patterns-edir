@@ -15,7 +15,7 @@
 %define patuser root
 %define patgrp root
 %define mode 544
-%define category eDirectory
+%define category edirectory
 
 Name:         sca-patterns-edir
 Summary:      Supportconfig Analysis Patterns for eDirectory
@@ -24,7 +24,7 @@ Group:        System/Monitoring
 License:      GPL-2.0
 Autoreqprov:  on
 Version:      1.3
-Release:      6
+Release:      7
 Source:       %{name}-%{version}.tar.gz
 BuildRoot:    %{_tmppath}/%{name}-%{version}
 Buildarch:    noarch
