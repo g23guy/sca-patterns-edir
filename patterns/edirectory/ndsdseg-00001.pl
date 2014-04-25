@@ -2,10 +2,10 @@
 
 # Title:       NDSD Segfaults when a Volume is being accessed
 # Description: Checks for NDSD segfaults.
-# Modified:    2013 Jun 21
+# Modified:    2014 Apr 25
 
 ##############################################################################
-#  Copyright (C) 2013 SUSE LLC
+#  Copyright (C) 2014 SUSE LLC
 ##############################################################################
 #
 #  This program is free software; you can redistribute it and/or modify
@@ -98,10 +98,14 @@ SDP::Core::processOptions();
 				SDP::Core::updateStatus(STATUS_CRITICAL, "Detected NDSD segfault");
 			} else {
 				my %HOST_INFO = SDP::SUSE::getHostInfo();
-				if ( $HOST_INFO{'oesmajor'} == 2 && $HOST_INFO{'oespatchlevel'} == 3 ) {
-					SDP::Core::updateStatus(STATUS_WARNING, "Detected potential NDSD segfault");
+				if ( $HOST_INFO{'oes'} ) {
+					if ( $HOST_INFO{'oesmajor'} == 2 && $HOST_INFO{'oespatchlevel'} == 3 ) {
+						SDP::Core::updateStatus(STATUS_WARNING, "Detected potential NDSD segfault");
+					} else {
+						SDP::Core::updateStatus(STATUS_ERROR, "ABORT: Missing OES2 SP3, skipping NDSD segfault check.");
+					}
 				} else {
-					SDP::Core::updateStatus(STATUS_ERROR, "ABORT: Missing OES2 SP3, skipping NDSD segfault check.");
+					SDP::Core::updateStatus(STATUS_ERROR, "ABORT: OES Not Installed, skipping NDSD segfault check.");
 				}
 			}
 		} else {

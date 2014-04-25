@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Fri Apr 25 20:48:53 UTC 2014 - jrecord@suse.com
+
+- Now ndsdseg-00001.pl checks if OES installed
+
+-------------------------------------------------------------------
 Wed Apr 16 16:05:24 UTC 2014 - jrecord@suse.com
 
 - Changed to lower case directory for consistency
