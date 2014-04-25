@@ -1,6 +1,7 @@
 -------------------------------------------------------------------
-Fri Apr 25 20:48:53 UTC 2014 - jrecord@suse.com
+Fri Apr 25 21:27:36 UTC 2014 - jrecord@suse.com
 
+- Fixed uninitialized errors in diskspace-00001.pl
 - Now ndsdseg-00001.pl checks if OES installed
 
 -------------------------------------------------------------------

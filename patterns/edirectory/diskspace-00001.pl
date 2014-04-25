@@ -1,11 +1,11 @@
-#!/usr/bin/perl -w
+#!/usr/bin/perl
 
 # Title:       Check disk space on DIB file system
 # Description: This pattern determines the mount point containing the eDirectory DIB and then checks the amount of disk space available as a percentage.  Hard-coded values of 90% full trigger a warning and 95% true trigger an error.  These values may not be relevant for all partition sizes.
-# Modified:    2013 Jun 21
+# Modified:    2014 Apr 25
 
 ##############################################################################
-#  Copyright (C) 2013 SUSE LLC
+#  Copyright (C) 2014 SUSE LLC
 ##############################################################################
 #
 #  This program is free software; you can redistribute it and/or modify
@@ -155,14 +155,15 @@ sub check_dir_depth_match {
 #   printDebug("Now executing","check_dir_depth_match");
 
   for (my $i = 0; $i <= $#{$ref_mountpath}; $i++) {
-    if (${$ref_mountpath}[$i] eq ${$ref_directory}[$i]) {
-      $match_depth++;
-    }
-    else {
-      # we either never matched, or we diverge later in
-      # the mount path.  Perfect matches should never
-      # hit this case.
-      $match_depth = 1;
+    if( defined(${$ref_mountpath}[$i]) and defined(${$ref_directory}[$i]) ) {
+      if (${$ref_mountpath}[$i] eq ${$ref_directory}[$i]) {
+        $match_depth++;
+      } else {
+        # we either never matched, or we diverge later in
+        # the mount path.  Perfect matches should never
+        # hit this case.
+        $match_depth = 1;
+      }
     }
   }
   return $match_depth;
@@ -191,7 +192,7 @@ SDP::Core::processOptions();
 			printDebug("Greater than 90%","TRUE");
 			updateStatus(STATUS_WARNING, "File system containing the DIB is $percent_full\% full.");
 		} else {
-			SDP::Core::updateStatus(STATUS_ERROR, "File system containing the DIB is not full.");
+			SDP::Core::updateStatus(STATUS_IGNORE, "File system containing the DIB is not full, only $percent_full\%.");
 		}
 	}
 	printPatternResults();
