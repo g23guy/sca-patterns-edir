@@ -2,10 +2,10 @@
 
 # Title:       Check persistent eDirectory cache settings
 # Description: This pattern checks the _ndsdb.ini file for cache settings and makes recommendations based on the DIB size and Novell's performance testing.
-# Modified:    2013 Jun 21
+# Modified:    2014 Jul 17
 
 ##############################################################################
-#  Copyright (C) 2013 SUSE LLC
+#  Copyright (C) 2014 SUSE LLC
 ##############################################################################
 #
 #  This program is free software; you can redistribute it and/or modify
@@ -22,6 +22,7 @@
 #
 #  Authors/Contributors:
 #     Tregaron Bayly (tbayly@novell.com)
+#     Jason Record (jrecord@suse.com)
 #
 ##############################################################################
 
@@ -89,7 +90,7 @@ SDP::Core::processOptions();
 
 	if ( SDP::Core::getSection($file, $section, \@output) ) {
 		foreach $_ (@output) {
-			if ( /nds/ ) {
+			if ( /^-.*nds$/ ) {
 				my (undef, undef, undef, undef, $filesize, undef, undef, undef, undef) = split(/\s+/, $_);
 				$dibsize += $filesize;
 			}

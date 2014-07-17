@@ -1,4 +1,9 @@
 -------------------------------------------------------------------
+Thu Jul 17 17:27:09 UTC 2014 - jrecord@suse.com
+
+- Fixed use of uninitialized value $filesize in cache-00001.pl
+
+-------------------------------------------------------------------
 Fri Apr 25 21:27:36 UTC 2014 - jrecord@suse.com
 
 - Fixed uninitialized errors in diskspace-00001.pl
