@@ -1,15 +1,16 @@
+# 
 # spec file for package sca-patterns-edir
 #
-# Copyright (C) 2014 SUSE LLC
+# Copyright (c) 2017 SUSE LINUX GmbH, Nuernberg, Germany.
 #
-# This file and all modifications and additions to the pristine
-# package are under the same license as the package itself.
-#
-# Source developed at:
-#  https://github.com/g23guy/sca-patterns-edir
-#
-# norootforbuild
-# neededforbuild
+# All modifications and additions to the file contributed by third parties
+# remain the property of their copyright owners, unless otherwise agreed
+# upon. The license for this file, and modifications and additions to the
+# file, is the same license as for the pristine package itself (unless the
+# license for the pristine package is not an Open Source License, in which
+# case the license is the MIT License). An "Open Source License" is a
+# license that conforms to the Open Source Definition (Version 1.9)
+# published by the Open Source Initiative.
 
 %define sca_common sca
 %define patdirbase /usr/lib/%{sca_common}
@@ -20,25 +21,21 @@
 %define category edirectory
 
 Name:         sca-patterns-edir
+Version:      1.3
+Release:      0
 Summary:      Supportconfig Analysis Patterns for eDirectory
+License:      GPL-2.0
 URL:          https://github.com/g23guy/sca-patterns-edir
 Group:        System/Monitoring
-License:      GPL-2.0
-Autoreqprov:  on
-Version:      1.3
-Release:      10
 Source:       %{name}-%{version}.tar.gz
-BuildRoot:    %{_tmppath}/%{name}-%{version}
-Buildarch:    noarch
 Requires:     sca-patterns-base
+Buildarch:    noarch
 
 %description
 Supportconfig Analysis (SCA) appliance patterns to identify known
 issues relating to all versions of eDirectory
 
-Authors:
---------
-    Jason Record <jrecord@suse.com>
+See %{_docdir}/sca-patterns-base/COPYING.GPLv2
 
 %prep
 %setup -q
@@ -47,23 +44,18 @@ Authors:
 
 %install
 pwd;ls -la
-rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT/%{patdir}/%{category}
-install -d $RPM_BUILD_ROOT/usr/share/doc/packages/%{sca_common}
-install -m 444 patterns/COPYING.GPLv2 $RPM_BUILD_ROOT/usr/share/doc/packages/%{sca_common}
-install -m %{mode} patterns/%{category}/* $RPM_BUILD_ROOT/%{patdir}/%{category}
+install -d %{buildroot}/%{patdir}/%{category}
+install -m %{mode} patterns/%{category}/* %{buildroot}/%{patdir}/%{category}
 
 %files
 %defattr(-,%{patuser},%{patgrp})
 %dir %{patdirbase}
 %dir %{patdir}
 %dir %{patdir}/%{category}
-%dir /usr/share/doc/packages/%{sca_common}
-%doc %attr(-,root,root) /usr/share/doc/packages/%{sca_common}/*
 %attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/*
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %changelog
 
