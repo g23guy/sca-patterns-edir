@@ -54,8 +54,5 @@ install -m %{mode} patterns/%{category}/* %{buildroot}/%{patdir}/%{category}
 %dir %{patdir}/%{category}
 %attr(%{mode},%{patuser},%{patgrp}) %{patdir}/%{category}/*
 
-%clean
-rm -rf %{buildroot}
-
 %changelog
 
